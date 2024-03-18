@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.*;
+import java.util.*; 
 
 public class Project_Alexander_Pham
 {
@@ -6,7 +8,7 @@ public class Project_Alexander_Pham
    {
       //Creation of file class
       try {
-      File file = new File("PolicyInformation");
+      File file = new File("PolicyInformation.txt");
       
       //Scanner for the input from the file
       Scanner input = new Scanner(file);
@@ -20,25 +22,37 @@ public class Project_Alexander_Pham
       String smokerStatus = "";
       double policyHolderHeight = 0.0;
       double policyHolderWeight = 0.0;
+      int smoker = 0;
+      int nonSmoker = 0;
+      String inputHolder = "";
       
       //Array holding Policy objects
-      ArrayList<Policy> policies = new ArrayList<Course>();
+      ArrayList<Policy> policies = new ArrayList<Policy>();
       
       //while loop to read file
-      while(inputFile.hasNext()) {
-         policyNumber = input.nextInt();
+      while(input.hasNext()) {
+         inputHolder = input.nextLine();
+         policyNumber = Integer.parseInt(inputHolder); //Converting String to Int
+         
          providerName = input.nextLine();
          policyHolderFirstName = input.nextLine();
          policyHolderLastName = input.nextLine();
-         age = input.nextInt();
-         smokerStatus = input.nextLine();
-         policyHolderHeight = input.nextDouble();
-         policyHolderWeight = input.nextDouble();
          
-         if(inputFile.hasNext())
+         inputHolder = input.nextLine();
+         age = Integer.parseInt(inputHolder); //Converting String to Int
+         
+         smokerStatus = input.nextLine();
+         
+         inputHolder = input.nextLine();
+         policyHolderHeight = Double.parseDouble(inputHolder); //Converting String to Double
+         
+         inputHolder = input.nextLine();
+         policyHolderWeight = Double.parseDouble(inputHolder); //Converting String to Double
+         
+         
+         if(input.hasNext())
             { 
-               inputFile.nextLine();
-               inputFile.nextLine();
+               input.nextLine();
             }
             
          //Creation of new Policy object, for each policy   
@@ -48,30 +62,36 @@ public class Project_Alexander_Pham
          policies.add(p);
       }
       
-   }//end of reading file and loop
-      
       input.close();//close file
+          
+      //Output each policy object in array
+      for(int i =0; i < policies.size(); i++) {
+         System.out.println("Policy Number: " + policies.get(i).getPolicyNumber());
+         System.out.println("Provider Name: " + policies.get(i).getProviderName());
+         System.out.println("Policyholder's First Name: " + policies.get(i).getPolicyHolderFirstName());
+         System.out.println("Policyholder's Last Name: " + policies.get(i).getPolicyHolderLastName());
+         System.out.println("Policyholder's Smoking Status: " + policies.get(i).getSmokerStatus());
+         System.out.println("Policyholder's Height: " + policies.get(i).getPolicyHolderHeight() + " inches");
+         System.out.println("Policyholder's Weight: " + policies.get(i).getPolicyHolderWeight() + " pounds");
+         System.out.println("Policyholder's BMI: " + policies.get(i).getBMI());
+         System.out.println("Policy Price: " + policies.get(i).getInsurancePolicyPrice());
+         if (policies.get(i).getSmokerStatus().equals("smoker")) {
+            smoker ++;
+         }
+         else {
+            nonSmoker ++;
+         }
+         System.out.println(); 
+       }
+      //Printing the number of smokers and non smokers  
+      System.out.println();
+      System.out.println("The number of policies with a smoker is: " + smoker);
+      System.out.println("The number of policies with a non-smoker is: " + nonSmoker);
       
-      //Creating a policy object
-      testPolicyHolder.setPolicyNumber(policyNumber);
-      testPolicyHolder.setProviderName(providerName);
-      testPolicyHolder.setPolicyHolderFirstName(policyHolderFirstName);
-      testPolicyHolder.setPolicyHolderLastName(policyHolderLastName);
-      testPolicyHolder.setAge(age);
-      testPolicyHolder.setSmokerStatus(smokerStatus);
-      testPolicyHolder.setPolicyHolderHeight(policyHolderHeight);
-      testPolicyHolder.setPolicyHolderWeight(policyHolderWeight);
-      testPolicyHolder.getBMI();
-
-      //Output final insurance policy, with information and price
-      System.out.println("Policy Number: " + testPolicyHolder.getPolicyNumber());
-      System.out.println("Provider Name: " + testPolicyHolder.getProviderName());
-      System.out.println("Policyholder's First Name: " + testPolicyHolder.getPolicyHolderFirstName());
-      System.out.println("Policyholder's Last Name: " + testPolicyHolder.getPolicyHolderLastName());
-      System.out.println("Policyholder's Smoking Status: " + testPolicyHolder.getSmokerStatus());
-      System.out.println("Policyholder's Height: " + testPolicyHolder.getPolicyHolderHeight() + " inches");
-      System.out.println("Policyholder's Weight: " + testPolicyHolder.getPolicyHolderWeight() + " pounds");
-      System.out.println("Policyholder's BMI: " + testPolicyHolder.getBMI());
-      System.out.println("Policy Price: " + testPolicyHolder.getInsurancePolicyPrice());
+   }//end of reading file and while loop 
+      //If anything goes wrong, the IOException will be caught and output message
+      catch(IOException ex) {
+         System.out.println("Something went wrong reading the file: " + ex.getMessage());
+      }
    }
 }
