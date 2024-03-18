@@ -1,5 +1,6 @@
 public class Policy
 {
+   //initialize fields
    private int policyNumber;
    private String providerName;
    private String policyHolderFirstName;
@@ -8,7 +9,9 @@ public class Policy
    private String smokerStatus;
    private double policyHolderHeight;
    private double policyHolderWeight;
+   private double BMI = 0;
    
+   //no-arg constructor
    public Policy() 
    {
       policyNumber = 1111;
@@ -20,6 +23,7 @@ public class Policy
       policyHolderHeight = 62.0;
       policyHolderWeight = 250.5;
    }
+   //constructor
    public Policy(int pN, String providerN, String policyholderFN, String policyholderLN, int a, String smokerS, double policyholderH, double policyholderW)
    {
       policyNumber = pN;
@@ -31,7 +35,8 @@ public class Policy
       policyHolderHeight = policyholderH;
       policyHolderWeight = policyholderW;
    }
-   public void int setPolicyNumber(int pN)
+   //setters and getters
+   public void setPolicyNumber(int pN)
    {
       policyNumber = pN;
    }
@@ -39,7 +44,7 @@ public class Policy
    {
       return policyNumber;
    }
-   public void String setProviderName(String providerN)
+   public void setProviderName(String providerN)
    {
       providerName = providerN;
    }
@@ -47,7 +52,7 @@ public class Policy
    {
       return providerName;
    }
-   public void String setPolicyHolderFirstName(String policyholderFN)
+   public void setPolicyHolderFirstName(String policyholderFN)
    {
       policyHolderFirstName = policyholderFN;
    }
@@ -55,7 +60,7 @@ public class Policy
    {
       return policyHolderFirstName;
    }
-   public void String setPolicyHolderLastName(String policyholderLN)
+   public void setPolicyHolderLastName(String policyholderLN)
    {
       policyHolderLastName = policyholderLN;
    }
@@ -63,7 +68,7 @@ public class Policy
    {
       return policyHolderLastName;
    }
-   public void int setAge(int a)
+   public void setAge(int a)
    {
       age = a;
    }
@@ -71,7 +76,7 @@ public class Policy
    {
       return age;
    }
-   public void String setSmokerStatus(String smokerS)
+   public void setSmokerStatus(String smokerS)
    {
       smokerStatus = smokerS;
    }
@@ -79,7 +84,7 @@ public class Policy
    {
       return smokerStatus;
    }
-   public void double setPolicyHolderHeight(double policyholderH)
+   public void setPolicyHolderHeight(double policyholderH)
    {
       policyHolderHeight = policyholderH;
    }
@@ -87,7 +92,7 @@ public class Policy
    {
       return policyHolderHeight;
    }
-   public void double setPolicyHolderWeight(double policyholderW)
+   public void setPolicyHolderWeight(double policyholderW)
    {
       policyHolderWeight = policyholderW;
    }
@@ -95,12 +100,14 @@ public class Policy
    {
       return policyHolderWeight;
    }
-   public double BMI() 
+   //calculating BMI and returning BMI
+   public double getBMI() 
    {
-      BMI = (policyHolderWeight * 703) / (policyHolderHeight^2);
+      BMI = (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);
       return BMI;
    }
-   public double insurancePolicyPrice()
+   //Calculating insurance policy price and returning it
+   public double getInsurancePolicyPrice()
    {
       double insurancePolicyPrice = 600;
       if (age > 50) {
