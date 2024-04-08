@@ -96,4 +96,8 @@ public class PolicyHolder {
       }
       return insurancePolicyPrice;
    }
+   //toString method
+   public String toString() {
+      
+   }
 }
