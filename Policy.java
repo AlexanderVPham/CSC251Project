@@ -35,4 +35,8 @@ public class Policy
       policyHolderHeight = policyholderH;
       policyHolderWeight = policyholderW;
    }
+   //toString Method
+   public String toString() {
+   
+   }
 }
