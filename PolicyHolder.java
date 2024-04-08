@@ -1,7 +1,5 @@
 public class PolicyHolder {
    //initialize fields
-   private int policyNumber;
-   private String providerName;
    private String policyHolderFirstName;
    private String policyHolderLastName;
    private int age;
@@ -10,23 +8,28 @@ public class PolicyHolder {
    private double policyHolderWeight;
    private double BMI = 0;
    
+   //no-arg constructor
+   public Policy() 
+   {
+      String policyHolderFirstName = "John";
+      String policyHolderLastName = "Doe";
+      age = 18;
+      String smokerStatus = "non-smoker";
+      policyHolderHeight = 62.0;
+      policyHolderWeight = 250.5;
+   }
+   //constructor
+   public Policy(String policyholderFN, String policyholderLN, int a, String smokerS, double policyholderH, double policyholderW)
+   {
+      policyHolderFirstName = policyholderFN;
+      policyHolderLastName = policyholderLN;
+      age = a;
+      smokerStatus = smokerS;
+      policyHolderHeight = policyholderH;
+      policyHolderWeight = policyholderW;
+   }
+   
    //setters and getters
-   public void setPolicyNumber(int pN)
-   {
-      policyNumber = pN;
-   }
-   public int getPolicyNumber()
-   {
-      return policyNumber;
-   }
-   public void setProviderName(String providerN)
-   {
-      providerName = providerN;
-   }
-   public String getProviderName()
-   {
-      return providerName;
-   }
    public void setPolicyHolderFirstName(String policyholderFN)
    {
       policyHolderFirstName = policyholderFN;
@@ -98,6 +101,12 @@ public class PolicyHolder {
    }
    //toString method
    public String toString() {
-      
+      return "PolicyHolder's First Name: " + policyHolderFirstName + "\n" +
+             "PolicyHolder's Last Name: " + policyHolderLastName + "\n" +
+             "Policyholder's Age: " + age + "\n" +
+             "Policyholder's Smoking Status (Y/N): " + smokerStatus + "\n" +
+             "Policyholder's Height: " + policyHolderHeight + "\n" +
+             "Policyholder's Weight: " + policyHolderWeight + "\n" +
+             "Policyholder's BMI: " + BMI;
    }
 }
