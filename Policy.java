@@ -3,6 +3,7 @@ public class Policy
    //initialize fields
    private int policyNumber;
    private String providerName;
+   public static int numberPolicies;
 
    //setters and getters
    public void setPolicyNumber(int pN)
