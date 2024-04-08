@@ -9,7 +9,7 @@ public class PolicyHolder {
    private double BMI = 0;
    
    //no-arg constructor
-   public Policy() 
+   public PolicyHolder() 
    {
       String policyHolderFirstName = "John";
       String policyHolderLastName = "Doe";
@@ -19,7 +19,7 @@ public class PolicyHolder {
       policyHolderWeight = 250.5;
    }
    //constructor
-   public Policy(String policyholderFN, String policyholderLN, int a, String smokerS, double policyholderH, double policyholderW)
+   public PolicyHolder(String policyholderFN, String policyholderLN, int a, String smokerS, double policyholderH, double policyholderW)
    {
       policyHolderFirstName = policyholderFN;
       policyHolderLastName = policyholderLN;
@@ -27,6 +27,16 @@ public class PolicyHolder {
       smokerStatus = smokerS;
       policyHolderHeight = policyholderH;
       policyHolderWeight = policyholderW;
+   }
+   //Creating a copy, minimizing security holes
+   public PolicyHolder(PolicyHolder policyHolderCopy)
+   {
+      policyHolderFirstName = policyHolderCopy.policyHolderFirstName;
+      policyHolderLastName = policyHolderCopy.policyHolderLastName;
+      age = policyHolderCopy.age;
+      smokerStatus = policyHolderCopy.smokerStatus;
+      policyHolderHeight = policyHolderCopy.policyHolderHeight;
+      policyHolderWeight = policyHolderCopy.policyHolderWeight;
    }
    
    //setters and getters
@@ -107,6 +117,7 @@ public class PolicyHolder {
              "Policyholder's Smoking Status (Y/N): " + smokerStatus + "\n" +
              "Policyholder's Height: " + policyHolderHeight + "\n" +
              "Policyholder's Weight: " + policyHolderWeight + "\n" +
-             "Policyholder's BMI: " + BMI;
+             "Policyholder's BMI: " + BMI + "\n" +
+             "Policy Price: $" + getInsurancePolicyPrice();
    }
 }

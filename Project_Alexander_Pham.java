@@ -66,16 +66,8 @@ public class Project_Alexander_Pham
           
       //Output each policy object in array
       for(int i =0; i < policies.size(); i++) {
-         System.out.println("Policy Number: " + policies.get(i).getPolicyNumber());
-         System.out.println("Provider Name: " + policies.get(i).getProviderName());
-         System.out.println("Policyholder's First Name: " + policies.get(i).getPolicyHolderFirstName());
-         System.out.println("Policyholder's Last Name: " + policies.get(i).getPolicyHolderLastName());
-         System.out.println("Policyholder's Smoking Status: " + policies.get(i).getSmokerStatus());
-         System.out.println("Policyholder's Height: " + policies.get(i).getPolicyHolderHeight() + " inches");
-         System.out.println("Policyholder's Weight: " + policies.get(i).getPolicyHolderWeight() + " pounds");
-         System.out.println("Policyholder's BMI: " + policies.get(i).getBMI());
-         System.out.println("Policy Price: " + policies.get(i).getInsurancePolicyPrice());
-         if (policies.get(i).getSmokerStatus().equals("smoker")) {
+         System.out.println(policies.get(i));
+         if (policies.getPolicyHolder().getSmokerStatus().equals("smoker")) {
             smoker ++;
          }
          else {
@@ -83,6 +75,8 @@ public class Project_Alexander_Pham
          }
          System.out.println(); 
        }
+      //Printing the number of policies
+      System.out.println("There were " + numberPolicies + " Policy objects created.");
       //Printing the number of smokers and non smokers  
       System.out.println();
       System.out.println("The number of policies with a smoker is: " + smoker);
